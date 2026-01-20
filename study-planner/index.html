@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Planner with AI Import</title>
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1>Study Planner</h1>
+            <p>Plan your day manually or import from AI.</p>
+        </header>
+
+        <!-- Stats Section -->
+        <section class="stats-card">
+            <div class="stat-item">
+                <span class="stat-label">Planned Time</span>
+                <span class="stat-value" id="stats-total">0 min</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Completed</span>
+                <span class="stat-value" id="stats-completed">0 min</span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </section>
+
+        <!-- Manual Entry Section -->
+        <section class="card">
+            <h2>Add Task Manually</h2>
+            <div class="input-group">
+                <input type="text" id="subject-input" placeholder="Subject (e.g. Math)">
+                <input type="text" id="topic-input" placeholder="Topic (e.g. Algebra)">
+                <input type="number" id="time-input" placeholder="Minutes" min="1">
+            </div>
+            <button id="add-task-btn" class="btn btn-primary">Add Task</button>
+        </section>
+
+        <!-- AI Import Section -->
+        <section class="card">
+            <h2>Import AI Plan (JSON)</h2>
+            <p class="instruction">Paste JSON array with objects: { "subject": "...", "topic": "...", "minutes": ... }
+            </p>
+            <textarea id="json-input" rows="5" placeholder='[
+  {
+    "subject": "Math",
+    "topic": "Algebra",
+    "minutes": 45
+  }
+]'></textarea>
+            <button id="import-btn" class="btn btn-secondary">Import JSON</button>
+            <div id="import-error" class="error-msg"></div>
+        </section>
+
+        <!-- Task List Section -->
+        <section class="task-section">
+            <div class="section-header">
+                <h2>Today's Tasks</h2>
+                <button id="clear-all-btn" class="btn btn-text">Reset Day</button>
+            </div>
+            <div id="task-list" class="task-list">
+                <!-- Tasks will be injected here by JS -->
+                <div class="empty-state">No tasks added yet.</div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Application Logic -->
+    <script src="script.js"></script>
+</body>
+
+</html>
